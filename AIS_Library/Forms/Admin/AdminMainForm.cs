@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using Npgsql;
 using AIS_Library.Database;
 using AIS_Library.Models;
-using Publisher = AIS_Library.Models.Publisher; // Указываем, что используем наш класс
+using Publisher = AIS_Library.Models.Publisher;
 using LibModel = AIS_Library.Models.Librarian;
 using AIS_Library.Forms.General;
 namespace AIS_Library.Forms.Admin
@@ -13,9 +13,8 @@ namespace AIS_Library.Forms.Admin
     {
         public AdminMainForm()
         {
+            // Дизайн интерфейса кабинета администратора
             InitializeComponent();
-
-
 
             AIS_Library.Helpers.StyleHelper.ConfigureGrid(gridGenres);
             AIS_Library.Helpers.StyleHelper.ConfigureGrid(gridPublishers);
@@ -25,7 +24,7 @@ namespace AIS_Library.Forms.Admin
             AIS_Library.Helpers.StyleHelper.ConfigureGrid(gridLibrarians);
             AIS_Library.Helpers.StyleHelper.ConfigureGrid(gridReports);
 
-            // 2. Кнопки (пример для одной вкладки)
+            //  Кнопки (пример для одной вкладки)
             AIS_Library.Helpers.StyleHelper.ConfigureButton(btnAddGenre);
             AIS_Library.Helpers.StyleHelper.ConfigureButton(btnEditGenre);
             AIS_Library.Helpers.StyleHelper.ConfigureButton(btnDeleteGenre);
