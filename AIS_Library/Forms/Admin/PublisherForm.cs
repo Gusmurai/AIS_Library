@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using Publisher = AIS_Library.Models.Publisher; // Уточняем класс
+using Publisher = AIS_Library.Models.Publisher;
 
 namespace AIS_Library.Forms.Admin
 {
@@ -46,6 +46,19 @@ namespace AIS_Library.Forms.Admin
                 return;
             }
 
+            string confirmationMessage = _id == null
+                ? "Вы действительно хотите добавить новое издательство?"
+                : "Вы действительно хотите сохранить изменения?";
+
+            // Показываем диалоговое окно и ждем ответа пользователя
+            if (MessageBox.Show(confirmationMessage, "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                this.DialogResult = DialogResult.None; 
+                return; 
+            }
+
+
+
             using (var conn = DbHelper.GetConnection())
             {
                 try
@@ -53,9 +66,11 @@ namespace AIS_Library.Forms.Admin
                     conn.Open();
                     NpgsqlCommand cmd;
 
-                    if (_id == null)
+                    if (_id == null) // Режим добавления
+                    {
                         cmd = new NpgsqlCommand("INSERT INTO publishers (name, city) VALUES (@name, @city)", conn);
-                    else
+                    }
+                    else // Режим редактирования
                     {
                         cmd = new NpgsqlCommand("UPDATE publishers SET name = @name, city = @city WHERE publisher_id = @id", conn);
                         cmd.Parameters.AddWithValue("id", _id);
@@ -64,16 +79,20 @@ namespace AIS_Library.Forms.Admin
                     cmd.Parameters.AddWithValue("name", name);
                     cmd.Parameters.AddWithValue("city", city);
                     cmd.ExecuteNonQuery();
+
+      
                 }
                 catch (PostgresException ex)
                 {
-                    this.DialogResult = DialogResult.None;
-                    if (ex.SqlState == "23505") MessageBox.Show("Такое издательство в этом городе уже есть!", "Дубликат", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    else MessageBox.Show(ex.MessageText, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.DialogResult = DialogResult.None; 
+                    if (ex.SqlState == "23505")
+                        MessageBox.Show("Такое издательство в этом городе уже есть!", "Дубликат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        MessageBox.Show(ex.MessageText, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 catch (Exception ex)
                 {
-                    this.DialogResult = DialogResult.None;
+                    this.DialogResult = DialogResult.None; 
                     MessageBox.Show("Ошибка: " + ex.Message);
                 }
             }

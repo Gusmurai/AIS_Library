@@ -42,6 +42,7 @@
             // txtName
             // 
             txtName.Location = new Point(123, 33);
+            txtName.MaxLength = 30;
             txtName.Name = "txtName";
             txtName.Size = new Size(150, 27);
             txtName.TabIndex = 0;
@@ -67,9 +68,10 @@
             // btnSave
             // 
             btnSave.DialogResult = DialogResult.OK;
-            btnSave.Location = new Point(286, 289);
+            btnSave.Font = new Font("Segoe UI", 10.2F);
+            btnSave.Location = new Point(393, 250);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 29);
+            btnSave.Size = new Size(105, 29);
             btnSave.TabIndex = 3;
             btnSave.Text = "Сохранить";
             btnSave.UseVisualStyleBackColor = true;
@@ -78,7 +80,8 @@
             // btnCancel
             // 
             btnCancel.DialogResult = DialogResult.Cancel;
-            btnCancel.Location = new Point(395, 289);
+            btnCancel.Font = new Font("Segoe UI", 10.2F);
+            btnCancel.Location = new Point(293, 250);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(94, 29);
             btnCancel.TabIndex = 4;
@@ -88,27 +91,30 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10.2F);
             label1.Location = new Point(21, 36);
             label1.Name = "label1";
-            label1.Size = new Size(77, 20);
+            label1.Size = new Size(93, 23);
             label1.TabIndex = 5;
-            label1.Text = "Название";
+            label1.Text = "Название*";
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 10.2F);
             label2.Location = new Point(19, 98);
             label2.Name = "label2";
-            label2.Size = new Size(79, 20);
+            label2.Size = new Size(96, 23);
             label2.TabIndex = 6;
-            label2.Text = "Описание";
+            label2.Text = "Описание*";
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 10.2F);
             label3.Location = new Point(19, 209);
             label3.Name = "label3";
-            label3.Size = new Size(55, 20);
+            label3.Size = new Size(62, 23);
             label3.TabIndex = 7;
             label3.Text = "Сумма";
             // 
@@ -116,7 +122,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(513, 321);
+            ClientSize = new Size(510, 296);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -126,6 +132,7 @@
             Controls.Add(txtDesc);
             Controls.Add(txtName);
             Name = "FineArticleForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "FineArticleForm";
             ((System.ComponentModel.ISupportInitialize)nudAmount).EndInit();
             ResumeLayout(false);

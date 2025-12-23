@@ -19,7 +19,7 @@ namespace AIS_Library.Forms.Admin
         private readonly int? _tabelNumber;
         private readonly string _originalLogin;
 
-        // Временная переменная для нового пароля (при редактировании)
+
         private string _pendingNewPassword = null;
 
         // === КОНСТРУКТОР ДОБАВЛЕНИЯ ===
@@ -66,35 +66,27 @@ namespace AIS_Library.Forms.Admin
             btnChangeLogin.Visible = true;
 
             // Настройка ПАРОЛЯ
-            txtPassword.Visible = true;
-            txtPassword.Text = ""; // Обязательно пусто, чтобы было видно Placeholder
-            txtPassword.PlaceholderText = "Пароль скрыт"; // <--- ВОТ ОНО
-            txtPassword.ReadOnly = true;       // Писать напрямую нельзя
-            txtPassword.UseSystemPasswordChar = false; // Отключаем звездочки, чтобы видеть текст плейсхолдера
+            // Скрываем текстовое поле полностью
+            txtPassword.Visible = false;
 
+            // Показываем кнопку и ставим её НА МЕСТО текстового поля
             btnChangePass.Visible = true;
+            btnChangePass.Location = txtPassword.Location; // Встанет туда, где был TextBox
+
+
         }
 
 
-        // === КНОПКА СМЕНЫ ПАРОЛЯ ===
         private void btnChangePass_Click(object sender, EventArgs e)
         {
-            // 1. Спрашиваем
-            //if (MessageBox.Show("Вы действительно хотите сменить пароль сотрудника?",
-            //    "Смена пароля", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            //{
-            //    return;
-            //}
-
-            // 2. Открываем форму
+          
             using (var passForm = new ChangePasswordForm())
             {
                 if (passForm.ShowDialog() == DialogResult.OK)
                 {
                     _pendingNewPassword = passForm.NewPassword;
 
-                    // Визуально показываем, что изменение принято.
-                    // Когда мы задаем Text, PlaceholderText автоматически скрывается.
+                
                     txtPassword.Text = "Пароль будет изменен";
                     txtPassword.UseSystemPasswordChar = false; // Чтобы текст читался, а не был точками
 
@@ -104,7 +96,7 @@ namespace AIS_Library.Forms.Admin
             }
         }
 
-        // === СОХРАНЕНИЕ ===
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             string surname = txtSurname.Text.Trim();
@@ -114,9 +106,7 @@ namespace AIS_Library.Forms.Admin
             string newLogin = txtLogin.Text.Trim();
             bool isActive = chkIsActive.Checked;
 
-            // Определяем, какой пароль использовать
-            // Если это создание - берем из текстбокса. 
-            // Если редактирование - берем из временной переменной.
+       
             string passwordToSave = (_tabelNumber == null) ? txtPassword.Text.Trim() : _pendingNewPassword;
 
             // 1. ВАЛИДАЦИЯ
@@ -244,7 +234,7 @@ namespace AIS_Library.Forms.Admin
             }
         }
 
-        // === КНОПКА СМЕНЫ ЛОГИНА ===
+
         private void btnChangeLogin_Click(object sender, EventArgs e)
         {
             // Открываем форму смены логина

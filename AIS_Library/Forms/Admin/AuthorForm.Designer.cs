@@ -42,31 +42,38 @@
             // 
             // txtSurname
             // 
+            txtSurname.Font = new Font("Segoe UI", 10.2F);
             txtSurname.Location = new Point(168, 24);
+            txtSurname.MaxLength = 30;
             txtSurname.Name = "txtSurname";
-            txtSurname.Size = new Size(165, 27);
+            txtSurname.Size = new Size(165, 30);
             txtSurname.TabIndex = 0;
             // 
             // txtName
             // 
+            txtName.Font = new Font("Segoe UI", 10.2F);
             txtName.Location = new Point(168, 80);
+            txtName.MaxLength = 30;
             txtName.Name = "txtName";
-            txtName.Size = new Size(165, 27);
+            txtName.Size = new Size(165, 30);
             txtName.TabIndex = 1;
             // 
             // txtPatronymic
             // 
+            txtPatronymic.Font = new Font("Segoe UI", 10.2F);
             txtPatronymic.Location = new Point(168, 141);
+            txtPatronymic.MaxLength = 30;
             txtPatronymic.Name = "txtPatronymic";
-            txtPatronymic.Size = new Size(165, 27);
+            txtPatronymic.Size = new Size(165, 30);
             txtPatronymic.TabIndex = 2;
             // 
             // btnSave
             // 
             btnSave.DialogResult = DialogResult.OK;
-            btnSave.Location = new Point(159, 274);
+            btnSave.Font = new Font("Segoe UI", 10.2F);
+            btnSave.Location = new Point(259, 274);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 29);
+            btnSave.Size = new Size(104, 29);
             btnSave.TabIndex = 3;
             btnSave.Text = "Сохранить";
             btnSave.UseVisualStyleBackColor = true;
@@ -75,7 +82,8 @@
             // btnCancel
             // 
             btnCancel.DialogResult = DialogResult.Cancel;
-            btnCancel.Location = new Point(259, 274);
+            btnCancel.Font = new Font("Segoe UI", 10.2F);
+            btnCancel.Location = new Point(159, 274);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(94, 29);
             btnCancel.TabIndex = 4;
@@ -85,51 +93,58 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10.2F);
             label1.Location = new Point(12, 31);
             label1.Name = "label1";
-            label1.Size = new Size(73, 20);
+            label1.Size = new Size(88, 23);
             label1.TabIndex = 5;
-            label1.Text = "Фамилия";
+            label1.Text = "Фамилия*";
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 10.2F);
             label2.Location = new Point(12, 87);
             label2.Name = "label2";
-            label2.Size = new Size(39, 20);
+            label2.Size = new Size(51, 23);
             label2.TabIndex = 6;
-            label2.Text = "Имя";
+            label2.Text = "Имя*";
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 10.2F);
             label3.Location = new Point(12, 148);
             label3.Name = "label3";
-            label3.Size = new Size(72, 20);
+            label3.Size = new Size(83, 23);
             label3.TabIndex = 7;
             label3.Text = "Отчество";
             // 
             // label4
             // 
             label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 10.2F);
             label4.Location = new Point(12, 214);
             label4.Name = "label4";
-            label4.Size = new Size(116, 20);
+            label4.Size = new Size(132, 23);
             label4.TabIndex = 8;
             label4.Text = "Дата рождения";
             // 
             // dtpBirth
             // 
+            dtpBirth.Font = new Font("Segoe UI", 10.2F);
+            dtpBirth.Format = DateTimePickerFormat.Short;
             dtpBirth.Location = new Point(168, 207);
             dtpBirth.Name = "dtpBirth";
-            dtpBirth.Size = new Size(165, 27);
+            dtpBirth.Size = new Size(165, 30);
             dtpBirth.TabIndex = 9;
+            dtpBirth.ValueChanged += dtpBirth_ValueChanged;
             // 
             // AuthorForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(365, 313);
+            ClientSize = new Size(375, 315);
             Controls.Add(dtpBirth);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -141,6 +156,7 @@
             Controls.Add(txtName);
             Controls.Add(txtSurname);
             Name = "AuthorForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "AuthorForm";
             ResumeLayout(false);
             PerformLayout();

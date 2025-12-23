@@ -92,12 +92,12 @@ namespace AIS_Library.Forms.General
                         return;
                     }
 
-                    // === 4. ВОПРОС ПОЛЬЗОВАТЕЛЮ (Новое) ===
+                    // 4. ВОПРОС ПОЛЬЗОВАТЕЛЮ 
                     // Спрашиваем только тогда, когда уверены, что старый пароль верный
                     if (MessageBox.Show("Вы действительно хотите изменить свой пароль?", "Подтверждение смены пароля",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                     {
-                        this.DialogResult = DialogResult.None; // Не закрываем форму, даем шанс передумать
+                        this.DialogResult = DialogResult.None; 
                         return;
                     }
 
@@ -113,7 +113,7 @@ namespace AIS_Library.Forms.General
                     }
 
                     MessageBox.Show("Пароль успешно изменен!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    // DialogResult = OK сработает автоматически и форма закроется
+
                 }
                 catch (Exception ex)
                 {

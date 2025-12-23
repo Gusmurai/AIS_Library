@@ -54,143 +54,156 @@
             // 
             // txtSurname
             // 
-            txtSurname.Location = new Point(202, 24);
+            txtSurname.Location = new Point(227, 28);
+            txtSurname.MaxLength = 30;
             txtSurname.Name = "txtSurname";
-            txtSurname.Size = new Size(125, 27);
+            txtSurname.Size = new Size(267, 30);
             txtSurname.TabIndex = 0;
             // 
             // txtName
             // 
-            txtName.Location = new Point(202, 69);
+            txtName.Location = new Point(227, 79);
+            txtName.MaxLength = 30;
             txtName.Name = "txtName";
-            txtName.Size = new Size(125, 27);
+            txtName.Size = new Size(267, 30);
             txtName.TabIndex = 1;
             // 
             // txtPatronymic
             // 
-            txtPatronymic.Location = new Point(202, 120);
+            txtPatronymic.Location = new Point(227, 138);
+            txtPatronymic.MaxLength = 30;
             txtPatronymic.Name = "txtPatronymic";
-            txtPatronymic.Size = new Size(125, 27);
+            txtPatronymic.Size = new Size(267, 30);
             txtPatronymic.TabIndex = 2;
             // 
             // txtPassportSeria
             // 
-            txtPassportSeria.Location = new Point(202, 225);
+            txtPassportSeria.Location = new Point(227, 259);
             txtPassportSeria.MaxLength = 4;
             txtPassportSeria.Name = "txtPassportSeria";
-            txtPassportSeria.Size = new Size(125, 27);
+            txtPassportSeria.Size = new Size(140, 30);
             txtPassportSeria.TabIndex = 4;
             // 
             // txtPassportNum
             // 
-            txtPassportNum.Location = new Point(202, 278);
+            txtPassportNum.Location = new Point(227, 320);
             txtPassportNum.MaxLength = 6;
             txtPassportNum.Name = "txtPassportNum";
-            txtPassportNum.Size = new Size(125, 27);
+            txtPassportNum.Size = new Size(140, 30);
             txtPassportNum.TabIndex = 5;
             // 
             // txtAddress
             // 
-            txtAddress.Location = new Point(202, 324);
+            txtAddress.Location = new Point(227, 373);
             txtAddress.Multiline = true;
             txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(125, 27);
+            txtAddress.Size = new Size(267, 50);
             txtAddress.TabIndex = 6;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(55, 24);
+            label1.Font = new Font("Segoe UI", 10.2F);
+            label1.Location = new Point(62, 36);
             label1.Name = "label1";
-            label1.Size = new Size(73, 20);
+            label1.Size = new Size(88, 23);
             label1.TabIndex = 7;
-            label1.Text = "Фамилия";
+            label1.Text = "Фамилия*";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(55, 76);
+            label2.Font = new Font("Segoe UI", 10.2F);
+            label2.Location = new Point(62, 87);
             label2.Name = "label2";
-            label2.Size = new Size(39, 20);
+            label2.Size = new Size(51, 23);
             label2.TabIndex = 8;
-            label2.Text = "Имя";
+            label2.Text = "Имя*";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(55, 123);
+            label3.Font = new Font("Segoe UI", 10.2F);
+            label3.Location = new Point(62, 146);
             label3.Name = "label3";
-            label3.Size = new Size(72, 20);
+            label3.Size = new Size(83, 23);
             label3.TabIndex = 9;
             label3.Text = "Отчество";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(55, 175);
+            label4.Font = new Font("Segoe UI", 10.2F);
+            label4.Location = new Point(62, 205);
             label4.Name = "label4";
-            label4.Size = new Size(116, 20);
+            label4.Size = new Size(139, 23);
             label4.TabIndex = 10;
-            label4.Text = "Дата рождения";
+            label4.Text = "Дата рождения*";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(55, 225);
+            label5.Font = new Font("Segoe UI", 10.2F);
+            label5.Location = new Point(62, 267);
             label5.Name = "label5";
-            label5.Size = new Size(121, 20);
+            label5.Size = new Size(144, 23);
             label5.TabIndex = 11;
-            label5.Text = "Серия паспорта";
+            label5.Text = "Серия паспорта*";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(55, 278);
+            label6.Font = new Font("Segoe UI", 10.2F);
+            label6.Location = new Point(62, 328);
             label6.Name = "label6";
-            label6.Size = new Size(126, 20);
+            label6.Size = new Size(148, 23);
             label6.TabIndex = 12;
-            label6.Text = "Номер паспорта";
+            label6.Text = "Номер паспорта*";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(55, 331);
+            label7.Font = new Font("Segoe UI", 10.2F);
+            label7.Location = new Point(62, 400);
             label7.Name = "label7";
-            label7.Size = new Size(51, 20);
+            label7.Size = new Size(64, 23);
             label7.TabIndex = 13;
-            label7.Text = "Адрес";
+            label7.Text = "Адрес*";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(55, 381);
+            label8.Font = new Font("Segoe UI", 10.2F);
+            label8.Location = new Point(62, 460);
             label8.Name = "label8";
-            label8.Size = new Size(69, 20);
+            label8.Size = new Size(85, 23);
             label8.TabIndex = 14;
-            label8.Text = "Телефон";
+            label8.Text = "Телефон*";
             // 
             // txtPhone
             // 
-            txtPhone.Location = new Point(202, 374);
+            txtPhone.Location = new Point(227, 452);
+            txtPhone.MaxLength = 12;
             txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(125, 27);
+            txtPhone.Size = new Size(140, 30);
             txtPhone.TabIndex = 15;
             // 
             // pbPhoto
             // 
             pbPhoto.BorderStyle = BorderStyle.FixedSingle;
-            pbPhoto.Location = new Point(442, 24);
+            pbPhoto.Location = new Point(611, 20);
             pbPhoto.Name = "pbPhoto";
-            pbPhoto.Size = new Size(267, 268);
+            pbPhoto.Size = new Size(170, 235);
             pbPhoto.SizeMode = PictureBoxSizeMode.Zoom;
             pbPhoto.TabIndex = 16;
             pbPhoto.TabStop = false;
             // 
             // btnLoadPhoto
             // 
-            btnLoadPhoto.Location = new Point(442, 313);
+            btnLoadPhoto.Font = new Font("Segoe UI", 10.2F);
+            btnLoadPhoto.Location = new Point(702, 267);
             btnLoadPhoto.Name = "btnLoadPhoto";
-            btnLoadPhoto.Size = new Size(94, 29);
+            btnLoadPhoto.Size = new Size(106, 33);
             btnLoadPhoto.TabIndex = 17;
             btnLoadPhoto.Text = "Загрузить";
             btnLoadPhoto.UseVisualStyleBackColor = true;
@@ -198,9 +211,10 @@
             // 
             // btnClearPhoto
             // 
-            btnClearPhoto.Location = new Point(615, 313);
+            btnClearPhoto.Font = new Font("Segoe UI", 10.2F);
+            btnClearPhoto.Location = new Point(573, 267);
             btnClearPhoto.Name = "btnClearPhoto";
-            btnClearPhoto.Size = new Size(94, 29);
+            btnClearPhoto.Size = new Size(106, 33);
             btnClearPhoto.TabIndex = 18;
             btnClearPhoto.Text = "Удалить";
             btnClearPhoto.UseVisualStyleBackColor = true;
@@ -209,9 +223,10 @@
             // btnSave
             // 
             btnSave.DialogResult = DialogResult.OK;
-            btnSave.Location = new Point(551, 409);
+            btnSave.Font = new Font("Segoe UI", 10.2F);
+            btnSave.Location = new Point(702, 475);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 29);
+            btnSave.Size = new Size(106, 33);
             btnSave.TabIndex = 19;
             btnSave.Text = "Сохранить";
             btnSave.UseVisualStyleBackColor = true;
@@ -220,26 +235,29 @@
             // btnCancel
             // 
             btnCancel.DialogResult = DialogResult.Cancel;
-            btnCancel.Location = new Point(694, 409);
+            btnCancel.Font = new Font("Segoe UI", 10.2F);
+            btnCancel.Location = new Point(573, 475);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(94, 29);
+            btnCancel.Size = new Size(106, 33);
             btnCancel.TabIndex = 20;
             btnCancel.Text = "Отменить";
             btnCancel.UseVisualStyleBackColor = true;
             // 
             // dtpBirth
             // 
+            dtpBirth.CustomFormat = " ";
             dtpBirth.Format = DateTimePickerFormat.Short;
-            dtpBirth.Location = new Point(200, 171);
+            dtpBirth.Location = new Point(225, 197);
             dtpBirth.Name = "dtpBirth";
-            dtpBirth.Size = new Size(127, 27);
+            dtpBirth.Size = new Size(142, 30);
             dtpBirth.TabIndex = 21;
+            dtpBirth.ValueChanged += dtpBirth_ValueChanged;
             // 
             // ReaderForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(842, 522);
             Controls.Add(dtpBirth);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
@@ -261,7 +279,9 @@
             Controls.Add(txtPatronymic);
             Controls.Add(txtName);
             Controls.Add(txtSurname);
+            Font = new Font("Segoe UI", 10.2F);
             Name = "ReaderForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "ReaderForm";
             ((System.ComponentModel.ISupportInitialize)pbPhoto).EndInit();
             ResumeLayout(false);

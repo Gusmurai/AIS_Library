@@ -42,9 +42,10 @@
             // 
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Location = new Point(107, 94);
+            label1.Font = new Font("Segoe UI", 10.2F);
+            label1.Location = new Point(43, 30);
             label1.Name = "label1";
-            label1.Size = new Size(116, 20);
+            label1.Size = new Size(131, 23);
             label1.TabIndex = 0;
             label1.Text = "Старый пароль";
             // 
@@ -52,9 +53,10 @@
             // 
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
-            label2.Location = new Point(107, 160);
+            label2.Font = new Font("Segoe UI", 10.2F);
+            label2.Location = new Point(43, 92);
             label2.Name = "label2";
-            label2.Size = new Size(112, 20);
+            label2.Size = new Size(125, 23);
             label2.TabIndex = 1;
             label2.Text = "Новый пароль";
             // 
@@ -62,36 +64,37 @@
             // 
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
-            label3.Location = new Point(107, 237);
+            label3.Font = new Font("Segoe UI", 10.2F);
+            label3.Location = new Point(47, 150);
             label3.Name = "label3";
-            label3.Size = new Size(99, 20);
+            label3.Size = new Size(111, 23);
             label3.TabIndex = 2;
             label3.Text = "Подтвердите";
             // 
             // txtOldPass
             // 
             txtOldPass.Anchor = AnchorStyles.None;
-            txtOldPass.Location = new Point(323, 98);
+            txtOldPass.Location = new Point(207, 26);
             txtOldPass.Name = "txtOldPass";
-            txtOldPass.Size = new Size(125, 27);
+            txtOldPass.Size = new Size(191, 30);
             txtOldPass.TabIndex = 3;
             txtOldPass.UseSystemPasswordChar = true;
             // 
             // txtNewPass
             // 
             txtNewPass.Anchor = AnchorStyles.None;
-            txtNewPass.Location = new Point(323, 172);
+            txtNewPass.Location = new Point(207, 84);
             txtNewPass.Name = "txtNewPass";
-            txtNewPass.Size = new Size(125, 27);
+            txtNewPass.Size = new Size(191, 30);
             txtNewPass.TabIndex = 4;
             txtNewPass.UseSystemPasswordChar = true;
             // 
             // txtConfirmPass
             // 
             txtConfirmPass.Anchor = AnchorStyles.None;
-            txtConfirmPass.Location = new Point(323, 237);
+            txtConfirmPass.Location = new Point(207, 150);
             txtConfirmPass.Name = "txtConfirmPass";
-            txtConfirmPass.Size = new Size(125, 27);
+            txtConfirmPass.Size = new Size(191, 30);
             txtConfirmPass.TabIndex = 5;
             txtConfirmPass.UseSystemPasswordChar = true;
             // 
@@ -99,9 +102,10 @@
             // 
             btnSave.Anchor = AnchorStyles.None;
             btnSave.DialogResult = DialogResult.OK;
-            btnSave.Location = new Point(256, 323);
+            btnSave.Font = new Font("Segoe UI", 10.2F);
+            btnSave.Location = new Point(292, 225);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 29);
+            btnSave.Size = new Size(106, 33);
             btnSave.TabIndex = 6;
             btnSave.Text = "Сохранить";
             btnSave.UseVisualStyleBackColor = true;
@@ -111,18 +115,19 @@
             // 
             btnCancel.Anchor = AnchorStyles.None;
             btnCancel.DialogResult = DialogResult.Cancel;
-            btnCancel.Location = new Point(409, 323);
+            btnCancel.Font = new Font("Segoe UI", 10.2F);
+            btnCancel.Location = new Point(168, 225);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(94, 29);
+            btnCancel.Size = new Size(106, 33);
             btnCancel.TabIndex = 7;
             btnCancel.Text = "Отмена";
             btnCancel.UseVisualStyleBackColor = true;
             // 
             // ChangeSelfPasswordForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(430, 273);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(txtConfirmPass);
@@ -131,7 +136,9 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Font = new Font("Segoe UI", 10.2F);
             Name = "ChangeSelfPasswordForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Смена пароля";
             ResumeLayout(false);
             PerformLayout();

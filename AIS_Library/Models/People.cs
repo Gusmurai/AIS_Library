@@ -43,5 +43,10 @@ namespace AIS_Library.Models
 
         // Вспомогательное свойство для паспорта
         public string PassportFull => $"{PassportSeries} {PassportNumber}";
+
+        public bool IsActive { get; set; } // <--- НОВОЕ ПОЛЕ
+
+        // Вспомогательное свойство для таблицы
+        public string StatusText => IsActive ? "Активен" : "Архив";
     }
 }

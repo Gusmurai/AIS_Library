@@ -16,7 +16,7 @@ namespace AIS_Library.Forms.Admin
    
         public partial class GenreForm : Form
         {
-            private readonly int? _id; // Если null - это добавление, если есть число - редактирование
+            private readonly int? _id; 
 
             // Конструктор для ДОБАВЛЕНИЯ
             public GenreForm()
@@ -35,8 +35,8 @@ namespace AIS_Library.Forms.Admin
                 txtDesc.Text = genre.Description;
                 this.Text = "Редактирование жанра";
             }
-       
-            private void btnSave_Click(object sender, EventArgs e)
+
+        private void btnSave_Click(object sender, EventArgs e)
         {
             string name = txtName.Text.Trim();
             string desc = txtDesc.Text.Trim();
@@ -44,9 +44,23 @@ namespace AIS_Library.Forms.Admin
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(desc))
             {
                 MessageBox.Show("Заполните все поля!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                this.DialogResult = DialogResult.None; // Не закрывать форму
+                this.DialogResult = DialogResult.None; 
                 return;
             }
+
+
+            string confirmationMessage = _id == null
+                ? "Вы действительно хотите добавить новый жанр?"   
+                : "Вы действительно хотите сохранить изменения?";      
+
+
+            if (MessageBox.Show(confirmationMessage, "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                this.DialogResult = DialogResult.None;
+                return; 
+            }
+
+    
 
             using (var conn = DbHelper.GetConnection())
             {
@@ -69,11 +83,11 @@ namespace AIS_Library.Forms.Admin
                     cmd.Parameters.AddWithValue("desc", desc);
                     cmd.ExecuteNonQuery();
 
-                    // DialogResult = OK (настроено в свойствах кнопки), форма закроется сама
+
                 }
                 catch (PostgresException ex)
                 {
-                    this.DialogResult = DialogResult.None; // Оставляем форму открытой, чтобы исправить ошибку
+                    this.DialogResult = DialogResult.None; 
                     if (ex.SqlState == "23505") MessageBox.Show("Такой жанр уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else MessageBox.Show(ex.MessageText, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }

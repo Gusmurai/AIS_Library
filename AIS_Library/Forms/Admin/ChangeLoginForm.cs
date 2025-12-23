@@ -29,7 +29,7 @@ namespace AIS_Library.Forms.Admin
             if (string.IsNullOrEmpty(login))
             {
                 MessageBox.Show("Логин не может быть пустым!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                this.DialogResult = DialogResult.None; // Не закрывать форму
+                this.DialogResult = DialogResult.None; 
                 return;
             }
 
@@ -37,13 +37,12 @@ namespace AIS_Library.Forms.Admin
             if (MessageBox.Show($"Вы действительно хотите изменить логин на '{login}'?",
                 "Подтверждение смены логина", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
-                this.DialogResult = DialogResult.None; // Если "Нет" - не закрывать форму, дать возможность исправить
+                this.DialogResult = DialogResult.None; 
                 return;
             }
 
-            // 3. Если всё ок - сохраняем
             NewLogin = login;
-            // Форма закроется сама с результатом OK
+          
         }
     }
 }

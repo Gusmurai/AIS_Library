@@ -12,7 +12,7 @@ namespace AIS_Library.Forms.Admin
 {
     public partial class ChangePasswordForm : Form
     {
-        // Свойство, через которое главная форма заберет пароль
+       
         public string NewPassword { get; private set; }
 
         public ChangePasswordForm()
@@ -40,15 +40,14 @@ namespace AIS_Library.Forms.Admin
                 return;
             }
 
-            // 2. Вопрос пользователю
+
             if (MessageBox.Show("Вы действительно хотите задать новый пароль?",
                 "Подтверждение смены пароля", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
-                this.DialogResult = DialogResult.None; // Не закрывать форму
+                this.DialogResult = DialogResult.None; 
                 return;
             }
 
-            // 3. Если всё ок - сохраняем
             NewPassword = pass;
         }
     }

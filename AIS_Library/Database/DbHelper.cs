@@ -15,7 +15,7 @@ namespace AIS_Library.Database
         // Username - пользователь (обычно postgres)
         // Password - ТВОЙ пароль, который ты задавал при установке Postgres
         // Database - имя твоей базы данных
-        private static string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=1405;Database=AILibrary";
+       public static string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=1405;Database=AILibrary";
 
         /// <summary>
         /// Метод возвращает новое подключение к базе.

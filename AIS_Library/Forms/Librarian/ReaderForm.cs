@@ -17,11 +17,24 @@ namespace AIS_Library.Forms.Librarian
     public partial class ReaderForm : Form
     {
         private readonly int? _ticketNumber;
+
+        // Флаг: true - если загружено реальное фото (из БД или файла)
+        // false - если стоит заглушка
+        private bool _hasImage = false;
         public ReaderForm()
         {
             InitializeComponent();
             this.Text = "Новый читатель";
-            dtpBirth.Value = DateTime.Now.AddYears(-18); // По умолчанию ставим 18 лет назад
+            // === ХИТРОСТЬ С ДАТОЙ ===
+            // 1. Ставим формат "Пользовательский"
+            dtpBirth.Format = DateTimePickerFormat.Custom;
+            // 2. Задаем формат как "пробел" (поле будет выглядеть пустым)
+            dtpBirth.CustomFormat = " ";
+
+
+
+            pbPhoto.Image = ImageHelper.GeneratePlaceholder(pbPhoto.Width, pbPhoto.Height, "Фото читателя");
+            _hasImage = false;
         }
 
         // РЕДАКТИРОВАНИЕ
@@ -41,10 +54,17 @@ namespace AIS_Library.Forms.Librarian
             txtAddress.Text = reader.Address;
             txtPhone.Text = reader.Phone;
 
-            // Загрузка фото
             if (reader.Photo != null && reader.Photo.Length > 0)
             {
                 pbPhoto.Image = ImageHelper.BytesToImage(reader.Photo);
+                // ФОТО ЕСТЬ
+                _hasImage = true;
+            }
+            else
+            {
+                pbPhoto.Image = ImageHelper.GeneratePlaceholder(pbPhoto.Width, pbPhoto.Height, "Фото читателя");
+                // ФОТО НЕТ (даже если в pbPhoto есть картинка-заглушка)
+                _hasImage = false;
             }
         }
 
@@ -64,6 +84,9 @@ namespace AIS_Library.Forms.Librarian
                         return;
                     }
                     pbPhoto.Image = Image.FromFile(ofd.FileName);
+
+                    // ТЕПЕРЬ ФОТО ЕСТЬ
+                    _hasImage = true;
                 }
                 catch
                 {
@@ -74,7 +97,9 @@ namespace AIS_Library.Forms.Librarian
 
         private void btnClearPhoto_Click(object sender, EventArgs e)
         {
-            pbPhoto.Image = null;
+            pbPhoto.Image = ImageHelper.GeneratePlaceholder(pbPhoto.Width, pbPhoto.Height, "Фото читателя");
+            // ЛОГИЧЕСКИ ФОТО НЕТ
+            _hasImage = false;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -90,6 +115,8 @@ namespace AIS_Library.Forms.Librarian
             string address = txtAddress.Text.Trim();
             string phone = txtPhone.Text.Trim();
 
+            
+
             // 1. Валидация на пустоту (все поля кроме Отчества и Фото - NOT NULL)
             if (string.IsNullOrEmpty(surname) || string.IsNullOrEmpty(name) ||
                 string.IsNullOrEmpty(passSeria) || string.IsNullOrEmpty(passNum) ||
@@ -100,8 +127,23 @@ namespace AIS_Library.Forms.Librarian
                 return;
             }
 
-            // Конвертация фото
-            byte[] photoBytes = ImageHelper.ImageToBytes(pbPhoto.Image);
+            // ПРОВЕРКА ДАТЫ РОЖДЕНИЯ
+            // Если формат всё еще Custom (то есть "пробел"), значит дату не трогали
+            if (dtpBirth.Format == DateTimePickerFormat.Custom)
+            {
+                MessageBox.Show("Введите дату рождения читателя!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.DialogResult = DialogResult.None;
+                return;
+            }
+
+            // Подготовка фото для БД
+            object photoValue = DBNull.Value; // По умолчанию NULL
+
+            // Конвертируем только если флаг true (реальное фото)
+            if (_hasImage && pbPhoto.Image != null)
+            {
+                photoValue = ImageHelper.ImageToBytes(pbPhoto.Image);
+            }
 
             // 2. Вопрос
             string action = _ticketNumber == null ? "зарегистрировать" : "сохранить данные";
@@ -145,7 +187,7 @@ namespace AIS_Library.Forms.Librarian
                     cmd.Parameters.AddWithValue("pn", passNum);
                     cmd.Parameters.AddWithValue("addr", address);
                     cmd.Parameters.AddWithValue("ph", phone);
-                    cmd.Parameters.AddWithValue("photo", photoBytes ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("photo", photoValue);
 
                     cmd.ExecuteNonQuery();
                     // DialogResult = OK сработает сам
@@ -157,7 +199,7 @@ namespace AIS_Library.Forms.Librarian
                     if (ex.SqlState == "23505") // Уникальность паспорта
                         MessageBox.Show("Читатель с такими паспортными данными уже зарегистрирован!", "Дубликат", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
-                        // P0001 (твои триггеры) или CHECK constraints
+                       
                         MessageBox.Show(ex.MessageText, "Ошибка проверки данных", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 catch (Exception ex)
@@ -165,6 +207,15 @@ namespace AIS_Library.Forms.Librarian
                     this.DialogResult = DialogResult.None;
                     MessageBox.Show("Ошибка: " + ex.Message);
                 }
+            }
+        }
+
+        private void dtpBirth_ValueChanged(object sender, EventArgs e)
+        {
+           
+            if (dtpBirth.Format == DateTimePickerFormat.Custom)
+            {
+                dtpBirth.Format = DateTimePickerFormat.Short; 
             }
         }
     }

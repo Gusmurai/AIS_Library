@@ -15,7 +15,7 @@ namespace AIS_Library.Forms.Admin
 {
     public partial class FineArticleForm : Form
     {
-        private readonly int? _id; // ID статьи (null при добавлении)
+        private readonly int? _id; 
 
         public FineArticleForm()
         {
@@ -30,7 +30,7 @@ namespace AIS_Library.Forms.Admin
             _id = article.Id;
             txtName.Text = article.Name;
             txtDesc.Text = article.Description;
-            // Если сумма null (например, цена книги), ставим 0
+
             nudAmount.Value = article.BaseAmount ?? 0;
             this.Text = "Редактирование статьи";
         }
@@ -48,10 +48,19 @@ namespace AIS_Library.Forms.Admin
                 return;
             }
 
-            // Если 0, отправляем NULL (плавающая сумма), или оставляем 0 - зависит от твоей логики.
-            // Давай сделаем: если 0, то записываем как 0.00 (фиксированная сумма 0), 
-            // а NULL для штрафа "Утеря" лучше обрабатывать отдельно или считать 0 как "по цене книги".
-            // В твоем коде ранее мы передавали (object)amount.
+      
+            string confirmationMessage = _id == null
+                ? "Вы действительно хотите добавить новую статью штрафа?"
+                : "Вы действительно хотите сохранить изменения?";
+
+            // Показываем диалоговое окно и проверяем ответ
+            if (MessageBox.Show(confirmationMessage, "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                this.DialogResult = DialogResult.None; 
+                return; 
+            }
+
+           
             object amountVal = amount > 0 ? (object)amount : DBNull.Value;
 
             using (var conn = DbHelper.GetConnection())
@@ -80,8 +89,18 @@ namespace AIS_Library.Forms.Admin
                 catch (PostgresException ex)
                 {
                     this.DialogResult = DialogResult.None;
-                    // Вывод сообщения из триггера (проверка русского языка)
-                    MessageBox.Show(ex.MessageText, "Ошибка проверки", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                   
+                    if (ex.SqlState == "23505")
+                    {
+                        MessageBox.Show("Статья штрафа с таким названием уже существует!", "Дубликат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                       
+                        MessageBox.Show(ex.MessageText, "Ошибка проверки", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    
                 }
                 catch (Exception ex)
                 {
@@ -91,4 +110,5 @@ namespace AIS_Library.Forms.Admin
             }
         }
     }
-}
+    }
+

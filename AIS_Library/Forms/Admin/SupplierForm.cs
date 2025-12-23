@@ -22,7 +22,7 @@ namespace AIS_Library.Forms.Admin
         public SupplierForm()
         {
             InitializeComponent();
-            _originalInn = null; // Признак добавления
+            _originalInn = null; 
             this.Text = "Новый поставщик";
         }
 
@@ -30,7 +30,7 @@ namespace AIS_Library.Forms.Admin
         public SupplierForm(Supplier supplier)
         {
             InitializeComponent();
-            _originalInn = supplier.Inn; // Запоминаем кого редактируем
+            _originalInn = supplier.Inn; 
 
             txtInn.Text = supplier.Inn;
             txtName.Text = supplier.Name;
@@ -56,6 +56,21 @@ namespace AIS_Library.Forms.Admin
                 this.DialogResult = DialogResult.None;
                 return;
             }
+
+
+            string confirmationMessage = _originalInn == null
+                ? "Вы действительно хотите добавить нового поставщика?"
+                : "Вы действительно хотите сохранить изменения?";
+
+
+            if (MessageBox.Show(confirmationMessage, "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                this.DialogResult = DialogResult.None; 
+                return;
+            }
+
+
+
 
             using (var conn = DbHelper.GetConnection())
             {
@@ -86,7 +101,7 @@ namespace AIS_Library.Forms.Admin
                 }
                 catch (PostgresException ex)
                 {
-                    this.DialogResult = DialogResult.None; // Не закрываем форму при ошибке
+                    this.DialogResult = DialogResult.None; 
                     if (ex.SqlState == "23505")
                         MessageBox.Show("Поставщик с таким ИНН уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else

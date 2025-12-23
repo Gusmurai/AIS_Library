@@ -39,41 +39,46 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 26);
+            label1.Font = new Font("Segoe UI", 10.2F);
+            label1.Location = new Point(14, 30);
             label1.Name = "label1";
-            label1.Size = new Size(77, 20);
+            label1.Size = new Size(93, 23);
             label1.TabIndex = 0;
-            label1.Text = "Название";
+            label1.Text = "Название*";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 94);
+            label2.Font = new Font("Segoe UI", 10.2F);
+            label2.Location = new Point(14, 108);
             label2.Name = "label2";
-            label2.Size = new Size(51, 20);
+            label2.Size = new Size(64, 23);
             label2.TabIndex = 1;
-            label2.Text = "Город";
+            label2.Text = "Город*";
             // 
             // txtName
             // 
-            txtName.Location = new Point(120, 23);
+            txtName.Location = new Point(135, 26);
+            txtName.MaxLength = 30;
             txtName.Name = "txtName";
-            txtName.Size = new Size(168, 27);
+            txtName.Size = new Size(188, 30);
             txtName.TabIndex = 2;
             // 
             // txtCity
             // 
-            txtCity.Location = new Point(120, 87);
+            txtCity.Location = new Point(135, 100);
+            txtCity.MaxLength = 30;
             txtCity.Name = "txtCity";
-            txtCity.Size = new Size(168, 27);
+            txtCity.Size = new Size(188, 30);
             txtCity.TabIndex = 3;
             // 
             // btnSave
             // 
             btnSave.DialogResult = DialogResult.OK;
-            btnSave.Location = new Point(138, 165);
+            btnSave.Font = new Font("Segoe UI", 10.2F);
+            btnSave.Location = new Point(247, 176);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(94, 29);
+            btnSave.Size = new Size(106, 33);
             btnSave.TabIndex = 4;
             btnSave.Text = "Сохранить";
             btnSave.UseVisualStyleBackColor = true;
@@ -82,25 +87,28 @@
             // btnCancel
             // 
             btnCancel.DialogResult = DialogResult.Cancel;
-            btnCancel.Location = new Point(238, 165);
+            btnCancel.Font = new Font("Segoe UI", 10.2F);
+            btnCancel.Location = new Point(135, 176);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(94, 29);
+            btnCancel.Size = new Size(106, 33);
             btnCancel.TabIndex = 5;
             btnCancel.Text = "Отмена";
             btnCancel.UseVisualStyleBackColor = true;
             // 
             // PublisherForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(344, 206);
+            ClientSize = new Size(367, 237);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(txtCity);
             Controls.Add(txtName);
             Controls.Add(label2);
             Controls.Add(label1);
+            Font = new Font("Segoe UI", 10.2F);
             Name = "PublisherForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "PublisherForm";
             ResumeLayout(false);
             PerformLayout();

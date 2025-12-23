@@ -37,49 +37,53 @@
             // btnOk
             // 
             btnOk.DialogResult = DialogResult.OK;
-            btnOk.Location = new Point(42, 157);
+            btnOk.Font = new Font("Segoe UI", 10.2F);
+            btnOk.Location = new Point(208, 93);
             btnOk.Name = "btnOk";
-            btnOk.Size = new Size(124, 40);
+            btnOk.Size = new Size(115, 41);
             btnOk.TabIndex = 0;
-            btnOk.Text = "Применить";
+            btnOk.Text = "Сохранить";
             btnOk.UseVisualStyleBackColor = true;
             btnOk.Click += btnOk_Click;
             // 
             // btnCancel
             // 
             btnCancel.DialogResult = DialogResult.Cancel;
-            btnCancel.Location = new Point(200, 157);
+            btnCancel.Font = new Font("Segoe UI", 10.2F);
+            btnCancel.Location = new Point(84, 93);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(140, 40);
+            btnCancel.Size = new Size(107, 41);
             btnCancel.TabIndex = 1;
             btnCancel.Text = "Отмена";
             btnCancel.UseVisualStyleBackColor = true;
             // 
             // txtNewLogin
             // 
-            txtNewLogin.Location = new Point(200, 67);
+            txtNewLogin.Location = new Point(147, 32);
             txtNewLogin.Name = "txtNewLogin";
-            txtNewLogin.Size = new Size(125, 27);
+            txtNewLogin.Size = new Size(175, 30);
             txtNewLogin.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(42, 67);
+            label1.Font = new Font("Segoe UI", 10.2F);
+            label1.Location = new Point(14, 36);
             label1.Name = "label1";
-            label1.Size = new Size(102, 20);
+            label1.Size = new Size(114, 23);
             label1.TabIndex = 3;
             label1.Text = "Новый логин";
             // 
             // ChangeLoginForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(413, 260);
+            ClientSize = new Size(360, 171);
             Controls.Add(label1);
             Controls.Add(txtNewLogin);
             Controls.Add(btnCancel);
             Controls.Add(btnOk);
+            Font = new Font("Segoe UI", 10.2F);
             Name = "ChangeLoginForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Смена логина сотрудника";

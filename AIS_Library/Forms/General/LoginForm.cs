@@ -1,8 +1,8 @@
 using System;
 using System.Windows.Forms;
-using Npgsql; // Библиотека для Postgres
+using Npgsql; 
 
-// Подключаем твои папки (проверь, чтобы названия совпадали)
+
 using AIS_Library.Database;
 using AIS_Library.Models;
 using AIS_Library.Forms.Admin;
@@ -17,7 +17,7 @@ namespace AIS_Library.Forms.General
         {
             InitializeComponent();
 
-            // Проверка подключения при запуске
+    
             if (DbHelper.TestConnection())
             {
                 // Можно закомментировать эту строку, чтобы не мешала каждый раз
@@ -62,9 +62,7 @@ namespace AIS_Library.Forms.General
                                 string dbHash = reader.GetString(1);
                                 string dbSalt = reader.GetString(2);
 
-                                // === ГЛАВНОЕ ИЗМЕНЕНИЕ ЗДЕСЬ ===
-                                // Вызываем твой метод проверки.
-                                // Он сам возьмет соль, захеширует пароль и сравнит с dbHash.
+                              
                                 bool isPasswordCorrect = Helpers.PasswordHelper.VerifyPassword(password, dbHash, dbSalt);
 
                                 if (isPasswordCorrect)
@@ -73,7 +71,7 @@ namespace AIS_Library.Forms.General
                                     UserInfo.Login = login;
                                     UserInfo.Role = role;
 
-                                    reader.Close(); // Закрываем ридер
+                                    reader.Close(); 
 
                                     if (role == 1)
                                     {

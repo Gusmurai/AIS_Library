@@ -22,7 +22,8 @@ namespace AIS_Library.Forms.Admin
             InitializeComponent();
             _id = null;
             this.Text = "Новый автор";
-            dtpBirth.Value = DateTime.Now.AddYears(-30); // Для удобства
+            dtpBirth.Format = DateTimePickerFormat.Custom;
+            dtpBirth.CustomFormat = " ";
         }
 
         public AuthorForm(Author author)
@@ -32,8 +33,13 @@ namespace AIS_Library.Forms.Admin
             txtSurname.Text = author.Surname;
             txtName.Text = author.FirstName;
             txtPatronymic.Text = author.Patronymic;
-            // Дата обязательна в БД, поэтому она точно есть
-            if (author.DateOfBirth.HasValue) dtpBirth.Value = author.DateOfBirth.Value;
+
+            // Если редактируем - сразу показываем дату
+            if (author.DateOfBirth.HasValue)
+            {
+                dtpBirth.Value = author.DateOfBirth.Value;
+                dtpBirth.Format = DateTimePickerFormat.Short;
+            }
 
             this.Text = "Редактирование автора";
         }
@@ -43,6 +49,14 @@ namespace AIS_Library.Forms.Admin
             string surname = txtSurname.Text.Trim();
             string name = txtName.Text.Trim();
             string patronymic = txtPatronymic.Text.Trim();
+
+            if (dtpBirth.Format == DateTimePickerFormat.Custom)
+            {
+                MessageBox.Show("Введите дату рождения автора!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.DialogResult = DialogResult.None; // Не закрываем форму
+                return;
+            }
+
             DateTime birthDate = dtpBirth.Value;
 
             if (string.IsNullOrEmpty(surname) || string.IsNullOrEmpty(name))
@@ -51,6 +65,19 @@ namespace AIS_Library.Forms.Admin
                 this.DialogResult = DialogResult.None;
                 return;
             }
+
+            string confirmationMessage = _id == null
+                ? "Вы действительно хотите добавить нового автора?"
+                : "Вы действительно хотите сохранить изменения?";
+
+            // Показываем диалоговое окно и проверяем ответ
+            if (MessageBox.Show(confirmationMessage, "Подтверждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                this.DialogResult = DialogResult.None; 
+                return; 
+            }
+
+
 
             using (var conn = DbHelper.GetConnection())
             {
@@ -73,11 +100,12 @@ namespace AIS_Library.Forms.Admin
                     cmd.Parameters.AddWithValue("d", birthDate);
 
                     cmd.ExecuteNonQuery();
+
                 }
                 catch (PostgresException ex)
                 {
                     this.DialogResult = DialogResult.None;
-                    if (ex.SqlState == "23505") MessageBox.Show("Такой автор уже существует!", "Дубликат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (ex.SqlState == "23505") MessageBox.Show("Такой автор уже существует (ФИО + Дата рождения совпадают)!", "Дубликат", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else MessageBox.Show(ex.MessageText, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 catch (Exception ex)
@@ -86,6 +114,14 @@ namespace AIS_Library.Forms.Admin
                     MessageBox.Show("Ошибка: " + ex.Message);
                 }
             }
+        }
+        private void dtpBirth_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpBirth.Format == DateTimePickerFormat.Custom)
+            {
+                dtpBirth.Format = DateTimePickerFormat.Short;
+            }
+
         }
     }
 }
