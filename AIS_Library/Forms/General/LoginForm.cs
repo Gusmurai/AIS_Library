@@ -46,8 +46,7 @@ namespace AIS_Library.Forms.General
                 {
                     conn.Open();
 
-                    // Запрашиваем данные. 
-                    // ВАЖНО: Убедись, что в базе password_hash и password_salt не пустые!
+                    
                     string query = "SELECT role, password_hash, password_salt FROM users WHERE login = @u_login";
 
                     using (var cmd = new NpgsqlCommand(query, conn))
@@ -75,6 +74,22 @@ namespace AIS_Library.Forms.General
 
                                     if (role == 1)
                                     {
+                                        // Проверяем, не уволен ли сотрудник
+                                        using (var cmdCheck = new NpgsqlCommand("SELECT is_active FROM librarians WHERE user_login = @login", conn))
+                                        {
+                                            cmdCheck.Parameters.AddWithValue("login", login);
+                                            object statusObj = cmdCheck.ExecuteScalar();
+
+                                            // Если статус есть и он false (не активен)
+                                            if (statusObj != null && statusObj != DBNull.Value && (bool)statusObj == false)
+                                            {
+                                                MessageBox.Show("Ваша учетная запись заблокирована (статус: Уволен).\nОбратитесь к администратору.",
+                                                    "Доступ запрещен", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                return; // ПРЕРЫВАЕМ ВХОД
+                                            }
+                                        }
+
+                                        // Если активен — загружаем ID для работы
                                         LoadLibrarianId(login, conn);
                                     }
 

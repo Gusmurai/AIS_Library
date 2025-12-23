@@ -189,7 +189,7 @@
             txt.Location = new Point(0, 37);
             txt.Name = "txt";
             txt.SelectedIndex = 0;
-            txt.Size = new Size(1122, 665);
+            txt.Size = new Size(1221, 665);
             txt.TabIndex = 0;
             // 
             // tabIzd
@@ -199,7 +199,7 @@
             tabIzd.Location = new Point(4, 32);
             tabIzd.Name = "tabIzd";
             tabIzd.Padding = new Padding(3);
-            tabIzd.Size = new Size(1114, 629);
+            tabIzd.Size = new Size(1213, 629);
             tabIzd.TabIndex = 1;
             tabIzd.Text = "Издательства";
             tabIzd.UseVisualStyleBackColor = true;
@@ -216,7 +216,7 @@
             gridPublishers.RowHeadersVisible = false;
             gridPublishers.RowHeadersWidth = 51;
             gridPublishers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            gridPublishers.Size = new Size(1108, 582);
+            gridPublishers.Size = new Size(1207, 582);
             gridPublishers.TabIndex = 0;
             // 
             // panel3
@@ -229,7 +229,7 @@
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(3, 3);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1108, 41);
+            panel3.Size = new Size(1207, 41);
             panel3.TabIndex = 14;
             // 
             // txtSearchPublisher
@@ -252,7 +252,7 @@
             // btnDeletePublisher
             // 
             btnDeletePublisher.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnDeletePublisher.Location = new Point(1007, 3);
+            btnDeletePublisher.Location = new Point(1106, 3);
             btnDeletePublisher.Name = "btnDeletePublisher";
             btnDeletePublisher.Size = new Size(94, 31);
             btnDeletePublisher.TabIndex = 6;
@@ -263,7 +263,7 @@
             // btnAddPublisher
             // 
             btnAddPublisher.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnAddPublisher.Location = new Point(757, 3);
+            btnAddPublisher.Location = new Point(856, 3);
             btnAddPublisher.Name = "btnAddPublisher";
             btnAddPublisher.Size = new Size(94, 32);
             btnAddPublisher.TabIndex = 5;
@@ -274,7 +274,7 @@
             // btnEditPublish
             // 
             btnEditPublish.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnEditPublish.Location = new Point(857, 3);
+            btnEditPublish.Location = new Point(956, 3);
             btnEditPublish.Name = "btnEditPublish";
             btnEditPublish.Size = new Size(142, 31);
             btnEditPublish.TabIndex = 13;
@@ -897,7 +897,7 @@
             tabLib.Controls.Add(panel7);
             tabLib.Location = new Point(4, 32);
             tabLib.Name = "tabLib";
-            tabLib.Size = new Size(1114, 629);
+            tabLib.Size = new Size(1213, 629);
             tabLib.TabIndex = 5;
             tabLib.Text = "Сотрудники";
             tabLib.UseVisualStyleBackColor = true;
@@ -914,7 +914,7 @@
             gridLibrarians.RowHeadersVisible = false;
             gridLibrarians.RowHeadersWidth = 51;
             gridLibrarians.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            gridLibrarians.Size = new Size(1114, 587);
+            gridLibrarians.Size = new Size(1213, 587);
             gridLibrarians.TabIndex = 0;
             gridLibrarians.CellFormatting += gridLibrarians_CellFormatting;
             // 
@@ -928,13 +928,13 @@
             panel7.Dock = DockStyle.Top;
             panel7.Location = new Point(0, 0);
             panel7.Name = "panel7";
-            panel7.Size = new Size(1114, 42);
+            panel7.Size = new Size(1213, 42);
             panel7.TabIndex = 17;
             // 
             // btnDeleteLibrarian
             // 
             btnDeleteLibrarian.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnDeleteLibrarian.Location = new Point(1016, 5);
+            btnDeleteLibrarian.Location = new Point(1115, 5);
             btnDeleteLibrarian.Name = "btnDeleteLibrarian";
             btnDeleteLibrarian.Size = new Size(95, 31);
             btnDeleteLibrarian.TabIndex = 3;
@@ -962,7 +962,7 @@
             // btnEditLibrarian
             // 
             btnEditLibrarian.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnEditLibrarian.Location = new Point(876, 5);
+            btnEditLibrarian.Location = new Point(975, 5);
             btnEditLibrarian.Name = "btnEditLibrarian";
             btnEditLibrarian.Size = new Size(134, 31);
             btnEditLibrarian.TabIndex = 2;
@@ -973,7 +973,7 @@
             // btnAddLibrarian
             // 
             btnAddLibrarian.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnAddLibrarian.Location = new Point(773, 4);
+            btnAddLibrarian.Location = new Point(872, 4);
             btnAddLibrarian.Name = "btnAddLibrarian";
             btnAddLibrarian.Size = new Size(97, 31);
             btnAddLibrarian.TabIndex = 1;
@@ -1287,7 +1287,7 @@
             btnLogout.FlatAppearance.BorderSize = 0;
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            btnLogout.Location = new Point(1014, 4);
+            btnLogout.Location = new Point(1113, 4);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(96, 27);
             btnLogout.TabIndex = 0;
@@ -1303,7 +1303,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1122, 37);
+            panel1.Size = new Size(1221, 37);
             panel1.TabIndex = 1;
             // 
             // btnChangePassword
@@ -1313,7 +1313,7 @@
             btnChangePassword.FlatAppearance.BorderSize = 0;
             btnChangePassword.FlatStyle = FlatStyle.Flat;
             btnChangePassword.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            btnChangePassword.Location = new Point(814, 3);
+            btnChangePassword.Location = new Point(913, 3);
             btnChangePassword.Name = "btnChangePassword";
             btnChangePassword.Size = new Size(180, 28);
             btnChangePassword.TabIndex = 1;
@@ -1325,7 +1325,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1122, 702);
+            ClientSize = new Size(1221, 702);
             Controls.Add(txt);
             Controls.Add(panel1);
             Name = "AdminMainForm";
