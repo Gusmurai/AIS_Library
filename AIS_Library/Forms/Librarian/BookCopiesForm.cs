@@ -134,20 +134,28 @@ namespace AIS_Library.Forms.Librarian
 
             var selectedCopy = (Copy)gridCopies.SelectedRows[0].DataBoundItem;
 
-            // Проверки перед списанием
+            // 1. Проверка: уже списана
             if (selectedCopy.Status == "Списан")
             {
                 MessageBox.Show("Этот экземпляр уже списан!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            // 2. Если книга ВЫДАНА 
+            if (selectedCopy.Status == "Выдан")
+            {
+                MessageBox.Show("Этот экземпляр находится у читателя.\n" +
+                                "Сначала оформите возврат книги",
+                                "Списание запрещено", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            // Открываем форму списания
+            // 3. Открываем форму списания (только для книг "В наличии")
             using (var form = new WriteOffForm(selectedCopy.InventoryNumber, _bookTitle))
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    LoadCopies(txtSearchInv.Text.Trim()); 
+                    LoadCopies(txtSearchInv.Text.Trim());
                 }
             }
         }

@@ -126,9 +126,9 @@
             label4.Font = new Font("Segoe UI", 10.2F);
             label4.Location = new Point(12, 214);
             label4.Name = "label4";
-            label4.Size = new Size(132, 23);
+            label4.Size = new Size(139, 23);
             label4.TabIndex = 8;
-            label4.Text = "Дата рождения";
+            label4.Text = "Дата рождения*";
             // 
             // dtpBirth
             // 

@@ -643,7 +643,7 @@
             // btnExtendBook
             // 
             btnExtendBook.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnExtendBook.Location = new Point(634, 5);
+            btnExtendBook.Location = new Point(630, 7);
             btnExtendBook.Name = "btnExtendBook";
             btnExtendBook.Size = new Size(94, 29);
             btnExtendBook.TabIndex = 6;
@@ -654,7 +654,7 @@
             // btnLostBook
             // 
             btnLostBook.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnLostBook.Location = new Point(515, 6);
+            btnLostBook.Location = new Point(511, 6);
             btnLostBook.Name = "btnLostBook";
             btnLostBook.Size = new Size(113, 29);
             btnLostBook.TabIndex = 5;
@@ -665,7 +665,7 @@
             // btnReturnBook
             // 
             btnReturnBook.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnReturnBook.Location = new Point(415, 5);
+            btnReturnBook.Location = new Point(411, 6);
             btnReturnBook.Name = "btnReturnBook";
             btnReturnBook.Size = new Size(94, 29);
             btnReturnBook.TabIndex = 4;
@@ -675,7 +675,7 @@
             // 
             // btnIssueBook
             // 
-            btnIssueBook.Location = new Point(305, 5);
+            btnIssueBook.Location = new Point(305, 6);
             btnIssueBook.Name = "btnIssueBook";
             btnIssueBook.Size = new Size(94, 29);
             btnIssueBook.TabIndex = 3;
@@ -748,9 +748,9 @@
             // btnEditAmount
             // 
             btnEditAmount.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnEditAmount.Location = new Point(567, 20);
+            btnEditAmount.Location = new Point(567, 19);
             btnEditAmount.Name = "btnEditAmount";
-            btnEditAmount.Size = new Size(250, 28);
+            btnEditAmount.Size = new Size(250, 29);
             btnEditAmount.TabIndex = 4;
             btnEditAmount.Text = "Изменить сумму штрафа (admin)";
             btnEditAmount.UseVisualStyleBackColor = true;
